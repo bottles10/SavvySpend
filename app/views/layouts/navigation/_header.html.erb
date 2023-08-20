@@ -18,6 +18,7 @@
           <%= link_to "Home", root_path, class: "nav-link active", "aria-current": "page" %>
         </li>
         <% if user_signed_in? %>
+        <li><%= link_to "My Budgets", budgets_path(@Budgets), class: "nav-link active", "aria-current": "page"  %></li>
           <%= form_with(url: destroy_user_session_path, method: :delete) do |form| %>
             <li class="nav-item"><%= form.submit "Sign Out", class: "nav-link active", "aria-current": "page" %></li>
           <% end %>

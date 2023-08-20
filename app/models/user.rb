@@ -1,5 +1,7 @@
 class User < ApplicationRecord
 
+  has_many :budgets, dependent: :destroy
+
   validates :email, uniqueness: true
   validates :username, presence: true,  uniqueness: true, length: { within: 2..15 }
   validates :first_name, presence: true
