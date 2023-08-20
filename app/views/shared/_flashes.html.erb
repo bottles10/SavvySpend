@@ -1,0 +1,45 @@
+<% if notice %>
+  <div class="position-fixed end-0 p-3 custom-alert">
+    <div class="alert alert-info alert-dismissible fade show" role="alert">
+      <%= notice %>
+      <button
+        type="button"
+        class="btn-close"
+        data-bs-dismiss="alert"
+        aria-label="Close"
+      ></button>
+    </div>
+    <script>
+  setTimeout(function() {
+    const closeButton = document.querySelector('.alert-info .btn-close');
+    const alertContainer = closeButton.closest('.custom-alert');
+    alertContainer.classList.add('fade-out');
+    closeButton.click();
+  }, 3000);
+    </script>
+
+  </div>
+<% end %>
+
+<% if alert %>
+  <div class="position-fixed end-0 p-3 custom-alert">
+    <div class="alert alert-warning alert-dismissible fade show" role="alert">
+      <%= alert %>
+      <button
+        type="button"
+        class="btn-close"
+        data-bs-dismiss="alert"
+        aria-label="Close"
+      ></button>
+    </div>
+    <script>
+  setTimeout(function() {
+    const closeButton = document.querySelector('.alert-warning .btn-close');
+    const alertContainer = closeButton.closest('.custom-alert');
+    alertContainer.classList.add('fade-out');
+    closeButton.click();
+  }, 3000);
+    </script>
+
+  </div>
+<% end %>

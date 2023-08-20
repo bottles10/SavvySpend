@@ -11,8 +11,12 @@
   </head>
 
   <body>
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
+
+    <%= render "layouts/navigation/header" %>
+
+    <%= render "shared/flashes" %>
+
     <%= yield %>
+    
   </body>
 </html>

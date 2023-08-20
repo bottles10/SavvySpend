@@ -1,0 +1,34 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <div class="container-fluid">
+    <%= link_to "SavvySpend", root_path, class: "navbar-brand" %>
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <%= link_to "Home", root_path, class: "nav-link active", "aria-current": "page" %>
+        </li>
+        <% if user_signed_in? %>
+          <%= form_with(url: destroy_user_session_path, method: :delete) do |form| %>
+            <li class="nav-item"><%= form.submit "Sign Out", class: "nav-link active", "aria-current": "page" %></li>
+          <% end %>
+        <% else %>
+          <li class="nav-item"><%= link_to "Sign In",
+            new_user_session_path,
+            class: "nav-link active",
+            "aria-current": "page" %></li>
+        <% end %>
+
+      </ul>
+    </div>
+  </div>
+</nav>
