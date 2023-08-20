@@ -71,5 +71,10 @@ group :test do
   gem "webdrivers"
 end
 
+group :development do
+  gem 'letter_opener', '~> 1.8', '>= 1.8.1'
+  gem 'solargraph'
+end
+
 gem 'devise', '~> 4.9', '>= 4.9.2'
 gem 'bootstrap', '~> 5.3', '>= 5.3.1'
