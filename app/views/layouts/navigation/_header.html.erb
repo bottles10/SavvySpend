@@ -14,11 +14,12 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-        <li class="nav-item">
-          <%= link_to "Home", root_path, class: "nav-link active", "aria-current": "page" %>
-        </li>
         <% if user_signed_in? %>
+        <li class="nav-item">
+          <%= link_to "@#{current_user.username}", edit_user_registration_path, class: "nav-link active username", "aria-current": "page" %>
+        </li>
         <li><%= link_to "My Budgets", budgets_path(@Budgets), class: "nav-link active", "aria-current": "page"  %></li>
+        <li><%= link_to "My Expenses", expenses_path(@Expenses), class: "nav-link active", "aria-current": "page"  %></li>
           <%= form_with(url: destroy_user_session_path, method: :delete) do |form| %>
             <li class="nav-item"><%= form.submit "Sign Out", class: "nav-link active", "aria-current": "page" %></li>
           <% end %>
