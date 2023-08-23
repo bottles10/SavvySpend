@@ -18,6 +18,11 @@
         <li class="nav-item">
           <%= link_to "@#{current_user.username}", edit_user_registration_path, class: "nav-link active username", "aria-current": "page" %>
         </li>
+        <% if current_user.income.present? && current_user.income.persisted? %>
+        <li> <%= link_to "$#{current_user.user_income}", edit_income_path(current_user.income), class: "nav-link active income", "aria-current": "page" %></li>
+        <% else %>
+        <%= link_to "Please Enter Income to continue", new_income_path, class: "nav-link active", "aria-current": "page" %>
+        <% end %>
         <li><%= link_to "My Budgets", budgets_path(@Budgets), class: "nav-link active", "aria-current": "page"  %></li>
         <li><%= link_to "My Expenses", expenses_path(@Expenses), class: "nav-link active", "aria-current": "page"  %></li>
           <%= form_with(url: destroy_user_session_path, method: :delete) do |form| %>

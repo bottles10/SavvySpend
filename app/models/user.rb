@@ -2,7 +2,7 @@ class User < ApplicationRecord
 
   has_many :budgets, dependent: :destroy
   has_many :expenses, dependent: :destroy
-  has_one :income
+  has_one :income, dependent: :destroy
 
   validates :email, uniqueness: true
   validates :username, presence: true,  uniqueness: true, length: { within: 2..15 }
