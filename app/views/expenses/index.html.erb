@@ -1,4 +1,10 @@
-<p style="color: green"><%= notice %></p>
+<% if current_user.should_lower_spending %>
+  <div class="position-fixed end-0 p-3 custom-alert">
+    <div class="alert alert-danger fade show" role="alert">
+      Please lower your expenses. You've spent more than 60% of income
+    </div>
+  </div>
+<% end %>
 
 <h1>Expenses</h1>
 

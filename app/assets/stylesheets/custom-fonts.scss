@@ -6,3 +6,13 @@ a.nav-link.active.username {
     font-weight: 800;
     color: cornflowerblue;
 }
+
+a.nav-link.active.income {
+    color: limegreen;
+    font-weight: 800;
+}
+
+a.nav-link.active.no-income {
+    color: orangered;
+    font-weight: 800;
+}
