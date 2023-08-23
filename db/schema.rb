@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_08_20_231541) do
+ActiveRecord::Schema[7.0].define(version: 2023_08_23_085646) do
   create_table "budgets", force: :cascade do |t|
     t.integer "user_id", null: false
     t.string "category"
@@ -36,6 +36,15 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_20_231541) do
     t.index "\"user_id\", \"expense_id\"", name: "index_expenses_on_user_id_and_expense_id"
     t.index ["budget_id"], name: "index_expenses_on_budget_id"
     t.index ["user_id"], name: "index_expenses_on_user_id"
+  end
+
+  create_table "incomes", force: :cascade do |t|
+    t.integer "user_id", null: false
+    t.decimal "amount"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index "\"user_id\", \"income_id\"", name: "index_incomes_on_user_id_and_income_id"
+    t.index ["user_id"], name: "index_incomes_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -67,4 +76,5 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_20_231541) do
   add_foreign_key "budgets", "users"
   add_foreign_key "expenses", "budgets"
   add_foreign_key "expenses", "users"
+  add_foreign_key "incomes", "users"
 end
