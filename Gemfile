@@ -78,3 +78,4 @@ end
 
 gem 'devise', '~> 4.9', '>= 4.9.2'
 gem 'bootstrap', '~> 5.3', '>= 5.3.1'
+gem 'chartkick', '~> 5.0', '>= 5.0.3'
