@@ -35,6 +35,7 @@ class User < ApplicationRecord
   # else divide current balance by income and multiply by 100 for percentage
   def savings_goals
     savings =  total_expenses > current_balance ? user_income - current_balance : (current_balance / user_income) * 100
+    savings.to_i
   end
 
   def no_savings_left?
@@ -45,6 +46,10 @@ class User < ApplicationRecord
     sixty_of_income = user_income * 0.6
     return unless no_savings_left? || 0
     current_balance <= sixty_of_income
+  end
+
+  def expenses_label
+    expenses.map{ |exp| exp.category }
   end
 
   private

@@ -1,6 +1,9 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
   <div class="container-fluid">
-    <%= link_to "SavvySpend", root_path, class: "navbar-brand" %>
+    <%= link_to "SavvySpend", root_path, class: "navbar-brand logo" %>
+    <% if current_user.income.present? && current_user.income.persisted? %>
+      <%= link_to "Dashboard", dashboard_index_path, class: "navbar-brand", "aria-current": "page" %>
+      <% end %>
     <button
       class="navbar-toggler"
       type="button"
