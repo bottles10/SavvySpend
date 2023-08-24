@@ -1,72 +1,48 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <!-- Include Bootstrap CSS and other styles -->
-  <style>
-    /* Add any custom styles here */
-  </style>
-</head>
-<body>
- 
+
   <!-- Main Content Area -->
   <div class="container mt-5">
     <div class="row">
-      <!-- Sidebar -->
-      <div class="col-md-3">
-        <!-- Add sidebar content, such as navigation links -->
-      </div>
-
-      <!-- Dashboard Overview -->
-      <div class="col-md-9">
-        <h2>Dashboard Overview</h2>
-        <div class="row">
-          <div class="col-md-6">
-            <!-- Current Balance -->
-            <div class="card mb-3">
+    <!-- Dashboard Overview -->
+      <div class="col-md-8">
+        <h2>Welcome <%= current_user.username.titleize %>! </h2>
+        <!-- Current Balance -->
+            <div class="card mb-4">
               <div class="card-body">
                 <h5 class="card-title">Current Balance</h5>
-                <p class="card-text"> <%= number_to_currency(current_user.current_balance) %> </p>
+                <h3 class="card-text"> <%= number_to_currency(current_user.current_balance) %> </h3>
               </div>
             </div>
-          </div>
-          <div class="col-md-6">
             <!-- Income and Expenses Summary -->
-            <div class="card mb-3">
+            <div class="card mb-4">
               <div class="card-body">
                 <h5 class="card-title">Income & Expenses</h5>
                 <p class="card-text">Income: <%= number_to_currency(current_user.user_income) %> </p>
                 <p class="card-text">Expenses: <%= number_to_currency(current_user.total_expenses) %> </p>
               </div>
             </div>
-          </div>
-        </div>
-        
-        <!-- Charts and Graphs -->
-        <div class="row">
-          <div class="col-md-6">
             <!-- Expense Category Pie Chart -->
-            <div class="card mb-3">
+            <div class="card mb-4">
               <div class="card-body">
                 <h5 class="card-title">Expense Categories</h5>
                 <%= pie_chart current_user.expenses.group(:category).sum(:amount) %>
               </div>
             </div>
           </div>
-          <div class="col-md-6">
-            <!-- Savings Goals Progress Bar -->
-            <div class="card mb-3">
-              <div class="card-body">
-                <h5 class="card-title">Savings Goals</h5>
-                <div class="progress">
-                  <div class="progress-bar" role="progressbar" style="width: 75%;" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"> <%= number_to_percentage(current_user.savings_goals) %> </div>
-                </div>
-              </div>
-            </div>
-          </div>
+
+          <!-- Sidebar -->
+     <div class="col-md-4">
+  <h5 class="mb-3">Savings Goals</h5>
+  <!-- Savings Goals Progress Bars -->
+  <div class="card mb-3">
+    <div class="card-body">
+      <% current_user.budgets.each do |budget| %>
+        <h6 class="card-title"><%= budget.category %></h6>
+        <div class="progress mb-3">
+          <div class="progress-bar bg-success" role="progressbar" style="width: <%= current_user.savings_goals %>%;" aria-valuenow="<%= current_user.savings_goals %>" aria-valuemin="0" aria-valuemax="100"><%= number_to_percentage(current_user.savings_goals, precision: 0) %></div>
         </div>
-      </div>
+      <% end %>
     </div>
   </div>
+</div>
 
- </body>
-</html>
+  </div>

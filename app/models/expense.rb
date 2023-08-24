@@ -14,6 +14,7 @@ class Expense < ApplicationRecord
     budget_id.present?
   end
 
+
   private
 
   # Expenses date cannot be after tommorrow date

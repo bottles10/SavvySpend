@@ -16,3 +16,13 @@ a.nav-link.active.no-income {
     color: orangered;
     font-weight: 800;
 }
+
+.card {
+    border: none;
+    border-radius: 10px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  .progress {
+    height: 20px;
+    border-radius: 10px;
+  }

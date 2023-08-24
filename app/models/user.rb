@@ -52,6 +52,8 @@ class User < ApplicationRecord
     expenses.map{ |exp| exp.category }
   end
 
+  
+
   private
 
   def logins_verify

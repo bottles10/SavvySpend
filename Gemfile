@@ -74,6 +74,7 @@ end
 group :development do
   gem 'letter_opener', '~> 1.8', '>= 1.8.1'
   gem 'solargraph'
+  gem 'erb-formatter'
 end
 
 gem 'devise', '~> 4.9', '>= 4.9.2'
