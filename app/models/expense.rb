@@ -1,6 +1,6 @@
 class Expense < ApplicationRecord
   belongs_to :user
-  belongs_to :budget, optional: true
+  belongs_to :budget
 
   validates :date, presence: true
   validates :amount, presence: true

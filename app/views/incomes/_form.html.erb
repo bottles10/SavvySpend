@@ -1,22 +1,26 @@
-<%= form_with(model: income) do |form| %>
-  <% if income.errors.any? %>
-    <div style="color: red">
-      <h2><%= pluralize(income.errors.count, "error") %> prohibited this income from being saved:</h2>
-
-      <ul>
-        <% income.errors.each do |error| %>
-          <li><%= error.full_message %></li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>
-
-  <div>
-    <%= form.label :amount, style: "display: block" %>
-    <%= form.text_field :amount %>
+<%= form_with(model: income, class: "needs-validation", novalidate: true) do |form| %>
+  <div class="mb-4">
+    <% if income.errors.any? %>
+      <div class="alert alert-danger">
+        <h4 class="alert-heading">Errors prohibited this income from being saved:</h4>
+        <ul>
+          <% income.errors.each do |error| %>
+            <li><%= error.full_message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
   </div>
 
-  <div>
-    <%= form.submit %>
+  <div class="mb-3">
+    <%= form.label :amount, class: "form-label" %>
+    <%= form.text_field :amount, class: "form-control", placeholder: "Enter income amount", required: true %>
+    <div class="invalid-feedback">
+      Please enter a valid income amount.
+    </div>
+  </div>
+
+  <div class="mb-3">
+    <%= form.submit "Save", class: "btn btn-primary" %>
   </div>
 <% end %>

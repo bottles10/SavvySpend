@@ -1,28 +1,60 @@
 .custom-fsize-14 {
-    font-size: 14px;
+  font-size: 14px;
 }
 
 a.nav-link.active.username {
-    font-weight: 800;
-    color: cornflowerblue;
+  font-weight: 800;
+  color: cornflowerblue;
 }
 
 a.nav-link.active.income {
-    color: limegreen;
-    font-weight: 800;
+  color: limegreen;
+  font-weight: 800;
 }
 
 a.nav-link.active.no-income {
-    color: orangered;
-    font-weight: 800;
+  color: orangered;
+  font-weight: 800;
 }
 
 .card {
-    border: none;
-    border-radius: 10px;
-    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  border: none;
+  border-radius: 10px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+}
+.progress {
+  height: 20px;
+  border-radius: 10px;
+}
+
+.page-container {
+  max-width: 800px;
+  margin: 20px auto;
+  padding: 0;
+  background-color: #ffffff;
+  border-radius: 10px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+}
+.action-buttons {
+  margin-top: 20px;
+}
+
+
+.mb-3-custom {
+    margin-bottom: 1.5rem; /* Adjust the spacing as needed */
   }
-  .progress {
-    height: 20px;
-    border-radius: 10px;
+  
+
+  /* custom.css */
+.progress-bar-custom-red {
+    background-color: red;
   }
+  
+  .progress-bar-custom-yellow {
+    background-color: yellow;
+  }
+  
+  .progress-bar-custom-green {
+    background-color: green;
+  }
+  

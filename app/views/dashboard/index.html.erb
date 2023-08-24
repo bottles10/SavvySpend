@@ -35,14 +35,23 @@
   <!-- Savings Goals Progress Bars -->
   <div class="card mb-3">
     <div class="card-body">
-      <% current_user.budgets.each do |budget| %>
-        <h6 class="card-title"><%= budget.category %></h6>
-        <div class="progress mb-3">
-          <div class="progress-bar bg-success" role="progressbar" style="width: <%= current_user.savings_goals %>%;" aria-valuenow="<%= current_user.savings_goals %>" aria-valuemin="0" aria-valuemax="100"><%= number_to_percentage(current_user.savings_goals, precision: 0) %></div>
+      <% current_user.budgets.each_with_index do |budget, index| %>
+        <div class="mb-3-custom">
+          <h6 class="card-title"><%= budget.category %></h6>
+          <% savings_amount = current_user.budget_savings_goals[index] %>
+          <% percentage = (savings_amount.to_f / budget.amount * 100).round %>
+          <% color_class = progress_bar_color_class(percentage) %>
+          
+          <div class="progress">
+            <div class="progress-bar <%= color_class %>" role="progressbar" style="width: <%= percentage %>%;" aria-valuenow="<%= percentage %>" aria-valuemin="0" aria-valuemax="100"><%= number_to_percentage(percentage, precision: 0) %></div>
+          </div>
+          <p><strong>Savings:</strong> <%= number_to_currency(savings_amount) %></p>
         </div>
       <% end %>
     </div>
   </div>
 </div>
+
+
 
   </div>

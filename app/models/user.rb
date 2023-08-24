@@ -38,6 +38,17 @@ class User < ApplicationRecord
     savings.to_i
   end
 
+  def budget_savings_goals
+    savings_goals = []
+    budgets.each do |budget|
+      total_expenses_in_category = expenses.where(budget: budget).sum(:amount)
+      savings_percentage = (1 - (total_expenses_in_category.to_f / budget.amount)) * 100
+      savings_amount = budget.amount * (savings_percentage / 100)
+      savings_goals << [savings_amount, 0].max # Ensure positive values
+    end
+    savings_goals
+  end
+
   def no_savings_left?
     savings_goals.negative?
   end
@@ -53,6 +64,9 @@ class User < ApplicationRecord
   end
 
   
+  # TODO
+  # a user cannot budget more than income
+  # AND total budget of user cannot not be more than income.
 
   private
 
